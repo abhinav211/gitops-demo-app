@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GitOps Demo</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:50px;
+}
+
+.dev{
+background:#d4edda;
+}
+
+.qa{
+background:#fff3cd;
+}
+
+.stage{
+background:#cce5ff;
+}
+
+.prod{
+background:#f8d7da;
+}
+
+.card{
+padding:30px;
+border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body class="{{ env|lower }}">
+
+<div class="card">
+
+<h1>GitOps Promotion Demo</h1>
+
+<h2>Environment : {{ env }}</h2>
+
+<h2>Version : {{ version }}</h2>
+
+<h2>Commit : {{ commit }}</h2>
+
+<h2>Strategy : {{ strategy }}</h2>
+
+</div>
+
+</body>
+</html>
