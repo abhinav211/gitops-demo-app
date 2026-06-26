@@ -1,15 +1,16 @@
-<h2>GitOps Demo</h2>
+from flask import Flask, render_template
+import os
 
-<p>Environment : PROD</p>
-<p>Version : 1.0.1 🚀</p>
-<p>Strategy : CANARY</p>
+app = Flask(__name__)
 
-<div style="
-background:#dc3545;
-color:white;
-padding:12px;
-font-size:24px;
-text-align:center;
-font-weight:bold;">
-CANARY RELEASE v1.0.1
-</div>
+@app.route("/")
+def home():
+    return render_template(
+        "index.html",
+        environment=os.getenv("ENVIRONMENT", "DEV"),
+        version=os.getenv("VERSION", "1.0.0"),
+        strategy=os.getenv("STRATEGY", "CANARY")
+    )
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)

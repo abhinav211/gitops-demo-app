@@ -1,57 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>GitOps Demo</title>
+    <title>GitOps Demo</title>
 
-<style>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            text-align:center;
+            background:#f4f4f4;
+            margin:0;
+        }
 
-body{
-font-family:Arial;
-margin:50px;
-}
+        .banner{
+            background:#d32f2f;
+            color:white;
+            padding:18px;
+            font-size:30px;
+            font-weight:bold;
+        }
 
-.dev{
-background:#d4edda;
-}
+        .card{
+            margin:60px auto;
+            width:500px;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 15px rgba(0,0,0,.2);
+        }
 
-.qa{
-background:#fff3cd;
-}
+        h2{
+            color:#1976d2;
+        }
 
-.stage{
-background:#cce5ff;
-}
+        .version{
+            font-size:24px;
+            color:#d32f2f;
+            font-weight:bold;
+        }
 
-.prod{
-background:#f8d7da;
-}
-
-.card{
-padding:30px;
-border-radius:10px;
-}
-
-</style>
+        .footer{
+            margin-top:20px;
+            color:#777;
+        }
+    </style>
 
 </head>
 
-<body class="{{ env|lower }}">
+<body>
+
+<div class="banner">
+🚀 CANARY RELEASE 🚀
+</div>
 
 <div class="card">
 
-<h1>GitOps Promotion Demo</h1>
+<h1>Enterprise GitOps Demo</h1>
 
-<h2>Environment : {{ env }}</h2>
+<h2>Environment</h2>
+<p>{{ environment }}</p>
 
-<h2>🚀 Welcome to Version 2</h2>
+<h2>Version</h2>
+<p class="version">{{ version }}</p>
 
-<h2 style="color: green;">🚀 Release v1.0.1</h2>
+<h2>Deployment Strategy</h2>
+<p>{{ strategy }}</p>
 
-<h2>Version : {{ version }}</h2>
-
-<h2>Commit : {{ commit }}</h2>
-
-<h2>Strategy : {{ strategy }}</h2>
+<div class="footer">
+Powered by Kubernetes • Argo CD • Argo Rollouts • Traefik
+</div>
 
 </div>
 
