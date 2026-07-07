@@ -32,26 +32,3 @@ jobs:
 
       - name: Push Image
         run: docker push $IMAGE_NAME:${{ github.sha }}
-
-      - name: Checkout GitOps Repo
-        uses: actions/checkout@v4
-        with:
-          repository: abhinav211/gitops-demo-manifests
-          token: ${{ secrets.GH_PAT }}
-          path: gitops
-
-      - name: Update Image Tag
-        run: |
-          sed -i "s|image: .*|image: $IMAGE_NAME:${{ github.sha }}|" gitops/dev/rollout.yaml
-
-      - name: Commit and Push
-        run: |
-          cd gitops
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-
-          git add .
-
-          git commit -m "Update image to ${{ github.sha }}" || exit 0
-
-          git push
